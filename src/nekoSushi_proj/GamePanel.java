@@ -111,7 +111,7 @@ public class GamePanel extends JPanel implements ChangeListener {
 		//Neko Sushi and holder
 		plateLabel.setBounds(-getNewSize(Item.PLATE_WIDTH), getNewSize(OG_PLATE_Y), getNewSize(Item.PLATE_WIDTH), getNewSize(Item.PLATE_HEIGHT));
 		lidLabel.setBounds(-getNewSize(Item.PLATE_WIDTH), getNewSize(OG_LID_Y), getNewSize(Item.LID_WIDTH), getNewSize(Item.LID_HEIGHT));
-		currLabel.setBounds(-getNewSize(Item.PLATE_WIDTH), getNewSize(OG_ITEM_Y), getNewSize(Item.GAME_WIDTH), getNewSize(Item.GAME_HEIGHT));
+		currLabel.setBounds(-getNewSize(Item.PLATE_WIDTH), getNewSize(OG_ITEM_Y), getNewSize(currItem.getOgItemGameWidth()), getNewSize(currItem.getOgItemGameHeight()));
 		
 		//belt lines
 		beltLines1.setLocation(-10, getNewSize(OG_BELT_LINES_Y));	
@@ -239,7 +239,7 @@ public class GamePanel extends JPanel implements ChangeListener {
 		
 		//current Neko Sushi item
 		if(currItem != null) {
-			currLabel.setBounds(currItem.getX(), currItem.getY(), getNewSize(Item.GAME_WIDTH), getNewSize(Item.GAME_HEIGHT));
+			currLabel.setBounds(currItem.getX(), currItem.getY(), getNewSize(currItem.getOgItemGameWidth()), getNewSize(currItem.getOgItemGameHeight()));
 			add(currLabel);
 		}	
 		
@@ -284,7 +284,7 @@ public class GamePanel extends JPanel implements ChangeListener {
 		//reentering frame
 		if(currItem != null) {
 			currLabel = currItem.getGameLabel();
-			currLabel.setBounds(-getNewSize(Item.PLATE_WIDTH), getNewSize(OG_ITEM_Y), getNewSize(Item.GAME_WIDTH), getNewSize(Item.GAME_HEIGHT));
+			currLabel.setBounds(-getNewSize(Item.PLATE_WIDTH), getNewSize(OG_ITEM_Y), getNewSize(currItem.getOgItemGameWidth()), getNewSize(currItem.getOgItemGameHeight()));
 			
 //			plateLabel.setBounds(-getNewSize(Item.PLATE_WIDTH), getNewSize(OG_PLATE_Y), getNewSize(Item.PLATE_WIDTH), getNewSize(Item.PLATE_HEIGHT));
 //			lidLabel.setBounds(-getNewSize(Item.PLATE_WIDTH), getNewSize(OG_LID_Y), getNewSize(Item.LID_WIDTH), getNewSize(Item.LID_HEIGHT));

@@ -16,6 +16,10 @@ import javax.swing.event.ChangeListener;
  */
 
 public class DataModel {
+	public static final int SHRIMP_ITEM_OG_WIDTH = 750;
+	public static final int OTHER_ITEM_OG_WIDTH = 700;
+	public static final int IKURA_UNI_ITEM_OG_HEIGHT = 500;
+	public static final int OTHER_ITEM_OG_HEIGHT = 450;
 	
 	private ArrayList<Item> allItemsList;
 	private Item plate;
@@ -36,7 +40,7 @@ public class DataModel {
 //		allItemsList.add(new Item(this, "outline", "tuna nigiri.png", "fish (outline).png"));
 //		allItemsList.add(new Item(this, "no outline", "tuna nigiri.png", "fish (no outline).png"));
 //		allItemsList.add(new Item(this, "logo", "tuna nigiri.png", "logo.png"));
-		allItemsList.add(new Item(this, "tuna nigiri", "tuna nigiri.png", 450, 100, "tuna nigiri cat.png"));
+		allItemsList.add(new Item(this, "tuna nigiri", "tuna nigiri.png", 450, 100, "tuna nigiri cat.png", OTHER_ITEM_OG_WIDTH, OTHER_ITEM_OG_HEIGHT));
 		
 		plate = new Item(this, Holder.PLATE, "plate.png");
 		lid = new Item(this, Holder.LID, "lid.png");
@@ -185,7 +189,7 @@ public class DataModel {
 		int xLidOffset = NekoSushiTest.getNewSize(Item.PLATE_WIDTH)/2 - NekoSushiTest.getNewSize(Item.LID_WIDTH)/2;
 		lid.setX(xLidOffset + plate.getX());
 		if(currItem != null) {
-			int xCurrOffset = NekoSushiTest.getNewSize(Item.PLATE_WIDTH)/2 - NekoSushiTest.getNewSize(Item.GAME_WIDTH)/2;
+			int xCurrOffset = NekoSushiTest.getNewSize(Item.PLATE_WIDTH)/2 - NekoSushiTest.getNewSize(currItem.getOgItemGameWidth())/2;
 			currItem.setX(xCurrOffset + plate.getX());
 		}
 	}

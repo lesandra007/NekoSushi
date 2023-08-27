@@ -25,22 +25,20 @@ public class Item implements Cloneable {
 	public static final int LID_HEIGHT = 400;
 	public static final int PLATE_WIDTH = 800;
 	public static final int PLATE_HEIGHT = 200;
-	public static final int GAME_WIDTH = 400;
-	public static final int GAME_HEIGHT = 250;
-	
-	//info
-	public static final int OG_INFO_WIDTH = 700;
-	public static final int OG_INFO_HEIGHT = 450;
-//	public static final int OG_INFO_NAME_WIDTH = 450;
-//	public static final int OG_INFO_NAME_HEIGHT = 100;
-	
-	//receipt
-//	public static final int OG_RECEIPT_NAME_WIDTH = 200;
-//	public static final int OG_RECEIPT_NAME_HEIGHT = 50;
+//	public static final int GAME_WIDTH = 400;
+//	public static final int GAME_HEIGHT = 250;
+//	
+//	//info
+//	public static final int OG_INFO_WIDTH = 700;
+//	public static final int OG_INFO_HEIGHT = 450;
 	
 	//name
 	public static final double NAME_RECEIPT_OVER_INFO_WIDTH = 200/450.0;
 	public static final double NAME_RECEIPT_OVER_INFO_HEIGHT = 50/100.0;
+	
+	//item
+	public static final double ITEM_GAME_OVER_INFO_WIDTH = 400/700.0;
+	public static final double ITEM_GAME_OVER_INFO_HEIGHT = 250/450.0;
 	
 	private String name;
 	private int count; 
@@ -49,6 +47,8 @@ public class Item implements Cloneable {
 	private int ogNameInfoWidth;
 	private int ogNameInfoHeight;
 	private JLabel nameReceiptLabel;
+	private int ogItemInfoWidth;
+	private int ogItemInfoHeight;
 	private JLabel gameLabel;
 	private JLabel infoLabel;
 	private boolean isClaimed;
@@ -104,16 +104,22 @@ public class Item implements Cloneable {
 	 * @param model - the model that manages the data
 	 * @param name - the name of this item
 	 * @param nameFile - the name of the file holding the name image
+	 * @param nameInfoOGWidth - the original width of the name image during design for the information panel
+	 * @param nameInfoOGWidth - the original height of the name image during design for the information panel
 	 * @param itemFile - the name of the file holding the item image
+	 * @param itemInfoOGWidth - the original width of the name image during design for the information panel
+	 * @param itemInfoOGWidth - the original height of the name image during design for the information panel
 	 */
-	public Item(DataModel model, String name, String nameFile, int nameInfoOGWidth, int nameInfoOGHeight, String itemFile) {
+	public Item(DataModel model, String name, String nameFile, int nameInfoOGWidth, int nameInfoOGHeight, String itemFile, int itemInfoOGWidth, int itemInfoOGHeight) {
 		this.model = model;
 		this.name = name;
 		ogNameInfoWidth = nameInfoOGWidth;
 		ogNameInfoHeight = nameInfoOGHeight;
+		ogItemInfoWidth = itemInfoOGWidth;
+		ogItemInfoHeight = itemInfoOGHeight;
 		try {
-			gameLabel = new JLabel(nameToImgIcon(itemFile, GAME_WIDTH, GAME_HEIGHT), JLabel.CENTER);
-			infoLabel = new JLabel(nameToImgIcon(itemFile, OG_INFO_WIDTH, OG_INFO_HEIGHT), JLabel.CENTER);
+			infoLabel = new JLabel(nameToImgIcon(itemFile, itemInfoOGWidth, itemInfoOGHeight), JLabel.CENTER);
+			gameLabel = new JLabel(nameToImgIcon(itemFile, getOgItemGameWidth(), getOgItemGameHeight()), JLabel.CENTER);
 			nameInfoLabel =  new JLabel(nameToImgIcon(nameFile, nameInfoOGWidth, nameInfoOGHeight), JLabel.CENTER);
 			nameReceiptLabel =  new JLabel(nameToImgIcon(nameFile, (int)Math.round(nameInfoOGWidth*NAME_RECEIPT_OVER_INFO_WIDTH), (int)Math.round(nameInfoOGHeight*NAME_RECEIPT_OVER_INFO_HEIGHT)), JLabel.CENTER);
 		} catch (IOException e) {
@@ -171,12 +177,52 @@ public class Item implements Cloneable {
 		count++;
 	}
 	
+	/**
+	 * Returns the original width of the name label for the information panel determined during design
+	 * @return the original width of the name label for the information panel determined during design
+	 */
 	public int getOgNameInfoWidth() {
 		return ogNameInfoWidth;
 	}
 	
+	/**
+	 * Returns the original height of the name label for the information panel determined during design
+	 * @return the original height of the name label for the information panel determined during design
+	 */
 	public int getOgNameInfoHeight() {
 		return ogNameInfoHeight;
+	}
+	
+	/**
+	 * Returns the original width of the item label for the information panel determined during design
+	 * @return the original width of the item label for the information panel determined during design
+	 */
+	public int getOgItemInfoWidth() {
+		return ogItemInfoWidth;
+	}
+	
+	/**
+	 * Returns the original height of the item label for the information panel determined during design
+	 * @return the original height of the item label for the information panel determined during design
+	 */
+	public int getOgItemInfoHeight() {
+		return ogItemInfoHeight;
+	}
+	
+	/**
+	 * Returns the original width of the item label for the game panel determined during design
+	 * @return the original width of the item label for the game panel determined during design
+	 */
+	public int getOgItemGameWidth() {
+		return (int)Math.round(ogItemInfoWidth*ITEM_GAME_OVER_INFO_WIDTH);
+	}
+	
+	/**
+	 * Returns the original height of the item label for the game panel determined during design
+	 * @return the original height of the item label for the game panel determined during design
+	 */
+	public int getOgItemGameHeight() {
+		return (int)Math.round(ogItemInfoHeight*ITEM_GAME_OVER_INFO_HEIGHT);
 	}
 	
 	/**

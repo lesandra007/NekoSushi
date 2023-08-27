@@ -135,8 +135,8 @@ public class InfoPanel extends JPanel implements ChangeListener {
 		Graphics2D g2D = (Graphics2D) g;
 		g2D.drawImage(backgroundImage, 0, 0, null);
 		
-		int itemWidth = getNewSize(Item.OG_INFO_WIDTH);
-		int itemHeight = getNewSize(Item.OG_INFO_HEIGHT);
+		int itemWidth = getNewSize(currItem.getOgItemInfoWidth());
+		int itemHeight = getNewSize(currItem.getOgItemInfoHeight());
 		
 		int nameWidth = getNewSize(currItem.getOgNameInfoWidth());
 		int nameHeight = getNewSize(currItem.getOgNameInfoHeight());
@@ -165,7 +165,6 @@ public class InfoPanel extends JPanel implements ChangeListener {
 	 */
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		// TODO Auto-generated method stub
 		currItem = model.getCurrItem();
 		if(currItem == null) {
 			currItemLabel = null;
