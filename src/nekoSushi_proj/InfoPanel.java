@@ -28,7 +28,7 @@ import javax.swing.event.ChangeListener;
  */
 public class InfoPanel extends JPanel implements ChangeListener {
 	public static final int OG_Y_ITEM = 183-45;
-	public static final int OG_Y_NAME = 583;
+	public static final int OG_Y_NAME = 583; //590
 	
 	public static final int OG_CART_WIDTH = 300;
 	public static final int OG_CART_HEIGHT = 70;

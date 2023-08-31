@@ -18,8 +18,10 @@ import javax.swing.event.ChangeListener;
 public class DataModel {
 	public static final int SHRIMP_ITEM_OG_WIDTH = 750;
 	public static final int OTHER_ITEM_OG_WIDTH = 700;
-	public static final int IKURA_UNI_ITEM_OG_HEIGHT = 500;
+	public static final int GUNKAN_ITEM_OG_HEIGHT = 500;
 	public static final int OTHER_ITEM_OG_HEIGHT = 450;
+	
+	public static final int NAME_OG_HEIGHT = 100;
 	
 	private ArrayList<Item> allItemsList;
 	private Item plate;
@@ -33,14 +35,16 @@ public class DataModel {
 	 */
 	public DataModel() {
 		allItemsList = new ArrayList<>();
-//		allItemsList.add(new Item(this, "1", "tuna nigiri.png", "fish (outline).png"));
-//		allItemsList.add(new Item(this, "2", "tuna nigiri.png", "fish (no outline).png"));
-//		allItemsList.add(new Item(this, "3", "tuna nigiri.png", "logo.png"));
-//		allItemsList.add(new Item(this, "4", "tuna nigiri.png", "tuna nigiri cat.png"));
-//		allItemsList.add(new Item(this, "outline", "tuna nigiri.png", "fish (outline).png"));
-//		allItemsList.add(new Item(this, "no outline", "tuna nigiri.png", "fish (no outline).png"));
-//		allItemsList.add(new Item(this, "logo", "tuna nigiri.png", "logo.png"));
-		allItemsList.add(new Item(this, "tuna nigiri", "tuna nigiri.png", 450, 100, "tuna nigiri cat.png", OTHER_ITEM_OG_WIDTH, OTHER_ITEM_OG_HEIGHT));
+		allItemsList.add(new Item(this, "salmon nigiri", "salmon nigiri label.png", 500, NAME_OG_HEIGHT, "salmon nigiri.png", OTHER_ITEM_OG_WIDTH, OTHER_ITEM_OG_HEIGHT));
+		allItemsList.add(new Item(this, "tuna nigiri", "tuna nigiri label.png", 400, NAME_OG_HEIGHT, "tuna nigiri.png", OTHER_ITEM_OG_WIDTH, OTHER_ITEM_OG_HEIGHT));
+		allItemsList.add(new Item(this, "eel nigiri", "eel nigiri label.png", 350, NAME_OG_HEIGHT, "eel nigiri.png", OTHER_ITEM_OG_WIDTH, OTHER_ITEM_OG_HEIGHT));
+		allItemsList.add(new Item(this, "shrimp nigiri", "shrimp nigiri label.png", 500, NAME_OG_HEIGHT, "shrimp nigiri.png", SHRIMP_ITEM_OG_WIDTH, OTHER_ITEM_OG_HEIGHT));
+		allItemsList.add(new Item(this, "yellowtail nigiri", "yellowtail nigiri label.png", 600, NAME_OG_HEIGHT, "yellowtail nigiri.png", OTHER_ITEM_OG_WIDTH, OTHER_ITEM_OG_HEIGHT));
+		allItemsList.add(new Item(this, "salmon roe gunkan", "salmon roe gunkan label.png", 750, NAME_OG_HEIGHT, "salmon roe gunkan.png", OTHER_ITEM_OG_WIDTH, GUNKAN_ITEM_OG_HEIGHT));
+		allItemsList.add(new Item(this, "octopus nigiri", "octopus nigiri label.png", 550, NAME_OG_HEIGHT, "octopus nigiri.png", OTHER_ITEM_OG_WIDTH, OTHER_ITEM_OG_HEIGHT));
+		allItemsList.add(new Item(this, "egg nigiri", "egg nigiri label.png", 400, NAME_OG_HEIGHT, "egg nigiri.png", OTHER_ITEM_OG_WIDTH, OTHER_ITEM_OG_HEIGHT));
+		allItemsList.add(new Item(this, "sea urchin gunkan", "sea urchin gunkan label.png", 700, NAME_OG_HEIGHT, "sea urchin gunkan.png", OTHER_ITEM_OG_WIDTH, GUNKAN_ITEM_OG_HEIGHT));
+		allItemsList.add(new Item(this, "albacore nigiri", "albacore nigiri label.png", 550, NAME_OG_HEIGHT, "albacore nigiri.png", OTHER_ITEM_OG_WIDTH, OTHER_ITEM_OG_HEIGHT));
 		
 		plate = new Item(this, Holder.PLATE, "plate.png");
 		lid = new Item(this, Holder.LID, "lid.png");
